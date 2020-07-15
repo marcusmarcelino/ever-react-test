@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="17" viewBox="0 0 17 17">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1954" data-name="Rectangle 1954" width="17" height="17" transform="translate(475 489)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_24" data-name="Mask Group 24" transform="translate(-475 -489)" clip-path="url(#clip-path)">
+    <g id="share" transform="translate(475.708 489)">
+      <path id="Path_6656" data-name="Path 6656" d="M19.969,3.083a2.3,2.3,0,1,1-2.3-2.3,2.3,2.3,0,0,1,2.3,2.3Zm0,0" transform="translate(-4.917 -0.25)" fill="#fff"/>
+      <path id="Path_6657" data-name="Path 6657" d="M17.417,5.667A2.833,2.833,0,1,1,20.25,2.833,2.836,2.836,0,0,1,17.417,5.667Zm0-4.6a1.771,1.771,0,1,0,1.771,1.771,1.773,1.773,0,0,0-1.771-1.771Zm0,0" transform="translate(-4.667 0)" fill="#fff"/>
+      <path id="Path_6658" data-name="Path 6658" d="M19.969,19.75a2.3,2.3,0,1,1-2.3-2.3A2.3,2.3,0,0,1,19.969,19.75Zm0,0" transform="translate(-4.917 -5.583)" fill="#fff"/>
+      <path id="Path_6659" data-name="Path 6659" d="M17.417,22.333A2.833,2.833,0,1,1,20.25,19.5,2.836,2.836,0,0,1,17.417,22.333Zm0-4.6A1.771,1.771,0,1,0,19.187,19.5,1.773,1.773,0,0,0,17.417,17.729Zm0,0" transform="translate(-4.667 -5.333)" fill="#fff"/>
+      <path id="Path_6660" data-name="Path 6660" d="M5.385,11.417a2.3,2.3,0,1,1-2.3-2.3A2.3,2.3,0,0,1,5.385,11.417Zm0,0" transform="translate(-0.25 -2.917)" fill="#fff"/>
+      <path id="Path_6661" data-name="Path 6661" d="M2.833,14a2.833,2.833,0,1,1,2.833-2.833A2.836,2.836,0,0,1,2.833,14Zm0-4.6A1.771,1.771,0,1,0,4.6,11.167,1.773,1.773,0,0,0,2.833,9.4Zm0,0" transform="translate(0 -2.667)" fill="#fff"/>
+      <path id="Path_6662" data-name="Path 6662" d="M6.292,9.57a.708.708,0,0,1-.351-1.324L12.514,4.5a.708.708,0,1,1,.7,1.231L6.642,9.477a.7.7,0,0,1-.35.093Zm0,0" transform="translate(-1.787 -1.41)" fill="#fff"/>
+      <path id="Path_6663" data-name="Path 6663" d="M12.865,18.163a.7.7,0,0,1-.35-.093L5.942,14.324a.708.708,0,0,1,.7-1.231l6.573,3.747a.708.708,0,0,1-.351,1.324Zm0,0" transform="translate(-1.787 -4.16)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

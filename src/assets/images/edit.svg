@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2269" data-name="Rectangle 2269" width="12" height="12" transform="translate(282 684)" fill="#5e5e5e"/>
+    </clipPath>
+  </defs>
+  <g id="Editar" transform="translate(-282 -684)" clip-path="url(#clip-path)">
+    <g id="edit" transform="translate(282 684.03)">
+      <path id="Path_7842" data-name="Path 7842" d="M11.076,7.793a.3.3,0,0,0-.3.3v2.654a.9.9,0,0,1-.9.9H1.494a.9.9,0,0,1-.9-.9V2.958a.9.9,0,0,1,.9-.9H4.148a.3.3,0,0,0,0-.6H1.494A1.5,1.5,0,0,0,0,2.958v7.788A1.5,1.5,0,0,0,1.494,12.24H9.88a1.5,1.5,0,0,0,1.494-1.494V8.092a.3.3,0,0,0-.3-.3Zm0,0" transform="translate(0 -0.3)" fill="#5e5e5e"/>
+      <path id="Path_7843" data-name="Path 7843" d="M12.064.4a1.345,1.345,0,0,0-1.9,0L4.831,5.736a.3.3,0,0,0-.077.132L4.053,8.4a.3.3,0,0,0,.368.368l2.531-.7a.3.3,0,0,0,.132-.077l5.332-5.332a1.346,1.346,0,0,0,0-1.9ZM5.482,5.93,9.845,1.566l1.407,1.407L6.889,7.337ZM5.2,6.494,6.325,7.618,4.77,8.049Zm6.792-4.26-.317.317L10.268,1.143l.317-.317a.747.747,0,0,1,1.057,0l.351.351A.748.748,0,0,1,11.992,2.234Zm0,0" transform="translate(-0.808 -0.01)" fill="#5e5e5e"/>
+    </g>
+  </g>
+</svg>
