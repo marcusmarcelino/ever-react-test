@@ -24,20 +24,9 @@ export const Container = styled.div`
     }
 
     .mainSection {
-        max-width: 1628px;
-        height: 100%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: auto;
-        margin-bottom: 30px;
+        
         .stepperContainer {
-            width: 100%;
-            height: 84px;
-            margin: 55px auto;
-            display: flex;
-            justify-content: center;
+            
             .stepper {
                 background: #FFFFFF 0% 0% no-repeat padding-box;
                 border-radius: 15px;
@@ -103,10 +92,9 @@ export const Container = styled.div`
             margin: auto 0px;
         }
         .uploadCard {
-            display: flex;
-            justify-content: space-between;
+           
             .uploadForm {
-                width: 58%;
+                
                 .formSection {
                     margin-bottom: 30px;
                     width: 100%;
@@ -206,122 +194,16 @@ export const Container = styled.div`
                 }
             }
             .shoppingCart {
-                max-height: 810px;
-                width: 40%;
-                background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-                background: #FFFFFF 0% 0% no-repeat padding-box;
-                border-radius: 15px;
-                opacity: 1;
+                
                 .shoppingHeader {
-                    text-align: center;
-                    position: relative;
-                    padding: 35px 0px;
-                    p {
-                        font-family: 'Poppins-SemiBold';
-                        font-size: 18px;
-                        letter-spacing: 0px;
-                        color: #5E5E5E;
-                        text-transform: uppercase;
-                        opacity: 1;
-                        text-align: left;
-                        padding: 0 30px;
-                    }
-                    .marker {
-                        display: flex;
-                        justify-content: space-evenly;
-                        right: 0;
-                        top: 17px;
-                        position: absolute;
-                        width: 177px;
-                        height: 60px;
-                        background: transparent linear-gradient(89deg, #FF7F00 0%, #FFC400 100%) 0% 0% no-repeat padding-box;
-                        box-shadow: 0px 3px 6px #00000029;
-                        border-radius: 15px 0px 0px 15px;
-                        opacity: 1;
-                        span {
-                            text-align: left;
-                            font-size: 20px;
-                            font-family: 'Poppins-SemiBold';
-                            letter-spacing: 0px;
-                            color: #FFFFFF;
-                            text-transform: uppercase;
-                            opacity: 1;
-                            margin: auto 0px;
-                        }
-                        img {
-                            margin: auto 0px;
-                        }
-                    }
+                    
+                    
                 }
                 .shoppingTable {
-                    margin: 28px;
-                    height: 430px;
-                    overflow-y: scroll;
-                    border: 1px solid #BDBDBD;
-                    .tableTH {
-                        padding: 18px 0px;
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-                        span {
-                            text-align: left;
-                            font-size: 16px;
-                            font-family: 'Poppins-SemiBold';
-                            letter-spacing: 0px;
-                            color: #5E5E5E;
-                            opacity: 1;
-                            width: 25%;
-                            text-align: center;
-                        }
-                    }
-                    .tableTR {
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-                        padding: 11px 0px;
-                        align-items: center;
-
-                        img {
-                            margin: 0 auto;
-                        }
-
-                        span {
-                            text-align: left;
-                            font-size: 16px;
-                            font-family: 'Poppins-Regular';
-                            letter-spacing: 0px;
-                            opacity: 1;
-                            width: 25%;
-                            text-align: center;
-                            color: #7C7C7C;
-                            opacity: 1;
-                        }
-                    }
+                    
                 }
                 .shoppingFooter {
-                    width: 50%;
-                    float: right;
-                    .tableTF {
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-around;
-                        text-align: right;
-                        font-size: 16px;
-                        font-family: 'Poppins-Medium';
-                        letter-spacing: 0px;
-                        color: #5E5E5E;
-                        opacity: 1;
-                        padding: 5px;
-                    }
-                    .total {
-                        font-family: 'Poppins-SemiBold';
-                        font-size: 18px;
-                        text-align: right;
-                        letter-spacing: 0px;
-                        color: #5E5E5E;
-                        text-transform: uppercase;
-                        opacity: 1;
-                    }
+                    
                 }
                 .text-center {
                     text-align: center;
@@ -678,6 +560,154 @@ export const Container = styled.div`
     }
 `;
 
-export const Header = styled.header``;
+export const Content = styled.div`
+    max-width: 1628px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 30px;
+`;
 
-export const Content = styled.div``;
+export const ProgressBar = styled.div`
+    width: 100%;
+    height: 84px;
+    margin: 55px auto;
+    display: flex;
+    justify-content: center;
+`;
+
+export const ContainerUploadCard = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+export const ContentUploadForm = styled.div`
+    width: 58%;
+`;
+
+export const ContentShoppingCart = styled.div`
+    max-height: 810px;
+    width: 40%;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    opacity: 1;
+`;
+
+export const ContentShoppingCartHeader = styled.div`
+    text-align: center;
+    position: relative;
+    padding: 35px 0px;
+
+    p {
+        font-family: 'Poppins-SemiBold';
+        font-size: 18px;
+        letter-spacing: 0px;
+        color: #5E5E5E;
+        text-transform: uppercase;
+        opacity: 1;
+        text-align: left;
+        padding: 0 30px;
+    }
+    .marker {
+        display: flex;
+        justify-content: space-evenly;
+        right: 0;
+        top: 17px;
+        position: absolute;
+        width: 177px;
+        height: 60px;
+        background: transparent linear-gradient(89deg, #FF7F00 0%, #FFC400 100%) 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 15px 0px 0px 15px;
+        opacity: 1;
+        span {
+            text-align: left;
+            font-size: 20px;
+            font-family: 'Poppins-SemiBold';
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            opacity: 1;
+            margin: auto 0px;
+        }
+        img {
+            margin: auto 0px;
+        }
+    }
+`;
+
+export const ContentShoppingTable = styled.div`
+    margin: 28px;
+    height: 430px;
+    overflow-y: scroll;
+    border: 1px solid #BDBDBD;
+    .tableTH {
+        padding: 18px 0px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        span {
+            text-align: left;
+            font-size: 16px;
+            font-family: 'Poppins-SemiBold';
+            letter-spacing: 0px;
+            color: #5E5E5E;
+            opacity: 1;
+            width: 25%;
+            text-align: center;
+        }
+    }
+    .tableTR {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 11px 0px;
+        align-items: center;
+
+        img {
+            margin: 0 auto;
+        }
+
+        span {
+            text-align: left;
+            font-size: 16px;
+            font-family: 'Poppins-Regular';
+            letter-spacing: 0px;
+            opacity: 1;
+            width: 25%;
+            text-align: center;
+            color: #7C7C7C;
+            opacity: 1;
+        }
+    }
+`;
+
+export const ContentShoppingFooter = styled.div`
+    width: 50%;
+    float: right;
+    .tableTF {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        text-align: right;
+        font-size: 16px;
+        font-family: 'Poppins-Medium';
+        letter-spacing: 0px;
+        color: #5E5E5E;
+        opacity: 1;
+        padding: 5px;
+    }
+    .total {
+        font-family: 'Poppins-SemiBold';
+        font-size: 18px;
+        text-align: right;
+        letter-spacing: 0px;
+        color: #5E5E5E;
+        text-transform: uppercase;
+        opacity: 1;
+    }
+`;

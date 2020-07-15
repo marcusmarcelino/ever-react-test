@@ -13,8 +13,8 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { QontoConnector } from '../../config/dynamicCar';
+import { getSteps, getTableData, getResult} from './simulationData';
 
-import img1 from '../../assets/images/01.png';
 import maskGroup1 from '../../assets/images/MaskGroup1.svg';
 
 import * as S from './styled';
@@ -24,34 +24,6 @@ const HomePage = () => {
   const [validation, setValidation] = useState([1, 0, 0]);
   const [stepperStyles, setStepperStyles] = useState(["active", "beactive", "beactive"]);
   const [expanded, setExpanded] = useState(0);
-  
-  const getSteps = () => {
-    return ["Select", "Create an ad group", "Create an ad"];
-  };
-
-  const getTableData = () => {
-    return [
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-      { td1: img1, td2: "Fish Oil", td3: "1", td4: "R$ 79,00" },
-    ];
-  };
-  
-  const getResult = () => {
-    return [
-      { title: "Subtotal:", value: "R$ 674,00" },
-      { title: "Desconto:", value: "- R$ 269,60" },
-      { title: "Frete:", value: "R$ 0,00" },
-      { title: "Subtotal:", value: "R$ 674,00" },
-    ];
-  };
   
   const changeStepper = (event, activeStep) => {
     event.preventDefault();
@@ -100,7 +72,7 @@ const HomePage = () => {
   return (
     <S.Container className="root">
       <S.Content className="mainSection">
-        <div className="stepperContainer">
+        <S.ProgressBar className="stepperContainer">
           <Stepper
             activeStep={activeStep}
             alternativeLabel
@@ -113,237 +85,228 @@ const HomePage = () => {
               </Step>
             ))}
           </Stepper>
-        </div>
-        <form>
-          <div className="uploadCard">
-            <div className="uploadForm">
-              <Accordion
-                expanded={expandedEl === 0}
-                className="formSection"
-                onChange={(e) => changeExpand(e, 0)}
+        </S.ProgressBar>
+        <S.ContainerUploadCard className="uploadCard">
+          <S.ContentUploadForm className="uploadForm">
+            <Accordion
+              expanded={expandedEl === 0}
+              className="formSection"
+              onChange={(e) => changeExpand(e, 0)}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                className={stepperStyles[0]}
               >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  className={stepperStyles[0]}
-                >
-                  <Typography>Accordion 1</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div className="form">
-                    <div className="title">
-                      <span>Já está cadastrado?</span>
-                      <div>Clique aqui para entrar</div>
-                    </div>
-                    <div>
-                      <label>Nome Completo:</label>
-                      <input
-                        placeholder="Carla Sousa Caetano"
-                        onChange={() => handleValidation(0)}
-                        name="title"
-                      />
-                    </div>
-                    <div>
-                      <label>E-mail:</label>
-                      <input
-                        placeholder="carlacaetano@gmail.com"
-                        type="email"
-                        name="email"
-                      />
-                    </div>
-                    <div>
-                      <label>CPF:</label>
-                      <input placeholder="001.234.567-89"></input>
-                    </div>
-
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <input placeholder="(63) 9 9900 9901" />
-                    </div>
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <select>
-                        <option>feminino</option>
-                        <option>masculina</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <input placeholder="Carla Sousa Caetano" type="date" />
-                    </div>
-                    <div className="col-lg-12">
-                      <button
-                        onClick={(e) => changeStepper(e, 1)}
-                        disabled={!validation[0]}
-                        className="confirmBtn"
-                      >
-                        confirmar
-                      </button>
-                    </div>
+                <Typography>Accordion 1</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className="form">
+                  <div className="title">
+                    <span>Já está cadastrado?</span>
+                    <div>Clique aqui para entrar</div>
                   </div>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion
-                expanded={expandedEl === 1}
-                className="formSection"
-                onChange={(e) => changeExpand(e, 1)}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  className={stepperStyles[1]}
-                >
-                  <Typography>Informações para entrega{expandedEl}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div className="form">
-                    <div className="title">
-                      <span>Já está cadastrado?</span>
-                      <div>Clique aqui para entrar</div>
-                    </div>
-                    <div>
-                      <label>Nome Completo:</label>
-                      <input placeholder="Carla Sousa Caetano" />
-                    </div>
-                    <div>
-                      <label>E-mail:</label>
-                      <input placeholder="Carla Sousa Caetano" />
-                    </div>
-                    <div>
-                      <label>CPF:</label>
-                      <input></input>
-                    </div>
-
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <input placeholder="Carla Sousa Caetano" />
-                    </div>
-                    <div>
-                      <label>Gênero:</label>
-                      <select>
-                        <option>masculino</option>
-                        <option>fêmeo</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <input placeholder="Carla Sousa Caetano" type="date" />
-                    </div>
-                    <div className="col-lg-12">
-                      <button
-                        onClick={(e) => changeStepper(e, 2)}
-                        className="confirmBtn"
-                      >
-                        confirmar
-                      </button>
-                    </div>
+                  <div>
+                    <label>Nome Completo:</label>
+                    <input
+                      placeholder="Carla Sousa Caetano"
+                      onChange={() => handleValidation(0)}
+                      name="title"
+                    />
                   </div>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion
-                expanded={expandedEl === 2}
-                className="formSection"
-                onChange={(e) => changeExpand(e, 2)}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  className={stepperStyles[2]}
-                >
-                  <Typography>Forma de Pagamento</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div className="form">
-                    <div className="title">
-                      <span>Já está cadastrado?</span>
-                      <div>Clique aqui para entrar</div>
-                    </div>
-                    <div>
-                      <label>Nome Completo:</label>
-                      <input placeholder="Carla Sousa Caetano" />
-                    </div>
-                    <div>
-                      <label>E-mail:</label>
-                      <input placeholder="Carla Sousa Caetano" />
-                    </div>
-                    <div>
-                      <label>CPF:</label>
-                      <input></input>
-                    </div>
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <select>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                      </select>
-                    </div>
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <input placeholder="Carla Sousa Caetano" />
-                    </div>
-                    <div>
-                      <label>Telefone de Contato:</label>
-                      <input placeholder="Carla Sousa Caetano" type="date" />
-                    </div>
+                  <div>
+                    <label>E-mail:</label>
+                    <input
+                      placeholder="carlacaetano@gmail.com"
+                      type="email"
+                      name="email"
+                    />
                   </div>
-                </AccordionDetails>
-              </Accordion>
-            </div>
-            <div className="shoppingCart">
-              <div className="shoppingHeader">
-                <p>Seu carrinho de compras</p>
-                <div className="marker">
-                  <img src={maskGroup1} />
-                  <span>20% OFF</span>
-                </div>
-              </div>
-              <div className="shoppingTable">
-                <div className="tableTH">
-                  <span>Produto</span>
-                  <span>Descrição</span>
-                  <span>Qt</span>
-                  <span>Preço Un.</span>
-                </div>
-                {rows.map((data) => (
-                  <div className="tableTR">
-                    <span>
-                      <img src={data.td1} />
-                    </span>
-                    <span>{data.td2}</span>
-                    <span>{data.td3}</span>
-                    <span>{data.td4}</span>
+                  <div>
+                    <label>CPF:</label>
+                    <input placeholder="001.234.567-89"></input>
                   </div>
-                ))}
-              </div>
-              <div className="col-lg-12">
-                <div className="shoppingFooter">
-                  {result.map((data) => (
-                    <div className="tableTF">
-                      <span>{data.title}</span>
-                      <span>{data.value}</span>
-                    </div>
-                  ))}
-                  <div className="tableTF total">
-                    <span>TOTAL:</span>
-                    <span>R$ 404,40</span>
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <input placeholder="(63) 9 9900 9901" />
                   </div>
-                </div>
-                <div className="col-lg-12 text-center">
-                  {validation[2] === 1 && (
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <select>
+                      <option>feminino</option>
+                      <option>masculina</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <input placeholder="Carla Sousa Caetano" type="date" />
+                  </div>
+                  <div className="col-lg-12">
                     <button
+                      onClick={(e) => changeStepper(e, 1)}
+                      disabled={!validation[0]}
                       className="confirmBtn"
-                      type="button"
-                      onClick={handleOnSubmit}
                     >
                       confirmar
                     </button>
-                  )}
+                  </div>
                 </div>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion
+              expanded={expandedEl === 1}
+              className="formSection"
+              onChange={(e) => changeExpand(e, 1)}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                className={stepperStyles[1]}
+              >
+                <Typography>Informações para entrega{expandedEl}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className="form">
+                  <div className="title">
+                    <span>Já está cadastrado?</span>
+                    <div>Clique aqui para entrar</div>
+                  </div>
+                  <div>
+                    <label>Nome Completo:</label>
+                    <input placeholder="Carla Sousa Caetano" />
+                  </div>
+                  <div>
+                    <label>E-mail:</label>
+                    <input placeholder="Carla Sousa Caetano" />
+                  </div>
+                  <div>
+                    <label>CPF:</label>
+                    <input></input>
+                  </div>
+
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <input placeholder="Carla Sousa Caetano" />
+                  </div>
+                  <div>
+                    <label>Gênero:</label>
+                    <select>
+                      <option>masculino</option>
+                      <option>fêmeo</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <input placeholder="Carla Sousa Caetano" type="date" />
+                  </div>
+                  <div className="col-lg-12">
+                    <button
+                      onClick={(e) => changeStepper(e, 2)}
+                      className="confirmBtn"
+                    >
+                      confirmar
+                    </button>
+                  </div>
+                </div>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion
+              expanded={expandedEl === 2}
+              className="formSection"
+              onChange={(e) => changeExpand(e, 2)}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                className={stepperStyles[2]}
+              >
+                <Typography>Forma de Pagamento</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className="form">
+                  <div className="title">
+                    <span>Já está cadastrado?</span>
+                    <div>Clique aqui para entrar</div>
+                  </div>
+                  <div>
+                    <label>Nome Completo:</label>
+                    <input placeholder="Carla Sousa Caetano" />
+                  </div>
+                  <div>
+                    <label>E-mail:</label>
+                    <input placeholder="Carla Sousa Caetano" />
+                  </div>
+                  <div>
+                    <label>CPF:</label>
+                    <input></input>
+                  </div>
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <select>
+                      <option></option>
+                      <option></option>
+                      <option></option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <input placeholder="Carla Sousa Caetano" />
+                  </div>
+                  <div>
+                    <label>Telefone de Contato:</label>
+                    <input placeholder="Carla Sousa Caetano" type="date" />
+                  </div>
+                </div>
+              </AccordionDetails>
+            </Accordion>
+          </S.ContentUploadForm>
+          <S.ContentShoppingCart className="shoppingCart">
+            <S.ContentShoppingCartHeader className="shoppingHeader">
+              <p>Seu carrinho de compras</p>
+              <div className="marker">
+                <img src={maskGroup1} />
+                <span>20% OFF</span>
               </div>
-            </div>
-          </div>
-        </form>
+            </S.ContentShoppingCartHeader>
+            <S.ContentShoppingTable className="shoppingTable">
+              <div className="tableTH">
+                <span>Produto</span>
+                <span>Descrição</span>
+                <span>Qt</span>
+                <span>Preço Un.</span>
+              </div>
+              {rows.map((data) => (
+                <div className="tableTR">
+                  <span>
+                    <img src={data.td1} />
+                  </span>
+                  <span>{data.td2}</span>
+                  <span>{data.td3}</span>
+                  <span>{data.td4}</span>
+                </div>
+              ))}
+            </S.ContentShoppingTable>
+            <S.ContentShoppingFooter className="shoppingFooter">
+              {result.map((data) => (
+                <div className="tableTF">
+                  <span>{data.title}</span>
+                  <span>{data.value}</span>
+                </div>
+              ))}
+              <div className="tableTF total">
+                <span>TOTAL:</span>
+                <span>R$ 404,40</span>
+              </div>
+            </S.ContentShoppingFooter>
+            {validation[2] === 1 && (
+              <div className="col-lg-12 text-center">
+                <button className="confirmBtn" type="button" onClick={handleOnSubmit}>
+                  confirmar
+                </button>
+              </div>
+            )}
+          </S.ContentShoppingCart>
+        </S.ContainerUploadCard>
       </S.Content>
     </S.Container>
   );
