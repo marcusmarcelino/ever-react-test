@@ -17,7 +17,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
 };
 Button.defaultProps = {
-  variant: 'primary',
+  variant: '',
   children: '',
   showIcon: false,
   icon: '',

@@ -134,12 +134,15 @@ const GlobalStyles = createGlobalStyle`
   mark,
   audio,
   video {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      font-size: 100%;
-      font: inherit;
-      vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+
+    font-family: 'Poppins', sans-serif !important;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
   }
 
 
@@ -156,45 +159,35 @@ const GlobalStyles = createGlobalStyle`
   menu,
   nav,
   section {
-      display: block;
+    display: block;
   }
 
   body {
-      line-height: 1;
-      background-color: #F2F3F6;
+    line-height: 1;
+    background-color: #F2F3F6;
   }
 
   ol,
   ul {
-      list-style: none;
+    list-style: none;
   }
 
   blockquote,
   q {
-      quotes: none;
+    quotes: none;
   }
 
   blockquote:before,
   blockquote:after,
   q:before,
   q:after {
-      content: '';
-      content: none;
+    content: '';
+    content: none;
   }
 
   table {
-      border-collapse: collapse;
-      border-spacing: 0;
-  }
-
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-      font-family: 'Mali', cursive;
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 
   @font-face {

@@ -50,7 +50,7 @@ const HomePage = () => {
   ];
 
   const [stepper, setStepper] = useState(0);
-  const [validation, setValidation] = useState([1, 0, 0]);
+  const [validation, setValidation] = useState([1, 0, 0, 0]);
   const [stepperStyles, setStepperStyles] = useState(["active", "beactive", "beactive"]);
   const [expanded, setExpanded] = useState(0);
   
@@ -83,6 +83,13 @@ const HomePage = () => {
   };
 
   const handleValidation = () => {};
+
+  const handleTotal = (event, activeStep) => {
+    event.preventDefault();
+    let validationValue = validation.slice(); //creates the clone of the state
+    validationValue[activeStep] = 1;
+    setValidation(validationValue);
+  }
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -143,7 +150,7 @@ const HomePage = () => {
                           type="text"
                           name="name"
                           placeholder="Nome do destinatário"
-                          variant="login"
+                          variant=""
                           value={values.name}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -151,20 +158,20 @@ const HomePage = () => {
                         />
                       </S.ContainerInput>
 
-                      <S.ContainerInput>
-                      <Label htmlFor="dataPersonal__email">E-mail:</Label>
-                      <Input
-                        id="dataPersonal__"
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                        variant="login"
-                        values={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        errorMessage={errors.email}
-                      />
-                    </S.ContainerInput>
+                      <S.ContainerInput className="dataPersonal">
+                        <Label htmlFor="dataPersonal__email">E-mail:</Label>
+                        <Input
+                          id="dataPersonal__email"
+                          type="email"
+                          name="email"
+                          placeholder="E-mail"
+                          variant=""
+                          value={values.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.email}
+                        />
+                      </S.ContainerInput>
                     </S.FormGroup>
 
                     <S.FormGroup>
@@ -175,7 +182,7 @@ const HomePage = () => {
                           type="text"
                           name="cpf"
                           placeholder="CPF"
-                          variant="login"
+                          variant=""
                           value={values.cpf}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -190,7 +197,7 @@ const HomePage = () => {
                           type="text"
                           name="phone"
                           placeholder="(00) 0 0000-0000"
-                          variant="login"
+                          variant=""
                           value={values.phone}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -206,7 +213,7 @@ const HomePage = () => {
                           id="dataPersonal__genrer"
                           name="genrer"
                           placeholder="Selecione o Género"
-                          variant="login"
+                          variant=""
                           options={options}
                           value={values.genrer}
                           onChange={handleChange}
@@ -222,7 +229,7 @@ const HomePage = () => {
                           type="date"
                           name="birthday"
                           placeholder="Data de nascimento"
-                          variant="login"
+                          variant=""
                           value={values.birthday}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -233,7 +240,7 @@ const HomePage = () => {
                   </S.Form>
 
                   <div className="col-lg-12">
-                    <S.BtnConfirm onClick={(e) => changeStepper(e, 1)} disabled={!validation[0]} className="confirmBtn">
+                    <S.BtnConfirm onClick={(e) => changeStepper(e, 1)} variant={values.birthday ? 'primary' : ''} className="confirmBtn">
                       confirmar
                     </S.BtnConfirm>
                   </div>
@@ -266,7 +273,7 @@ const HomePage = () => {
                           type="text"
                           name="name"
                           placeholder="Nome do destinatário"
-                          variant="login"
+                          variant=""
                           value={values.name}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -274,20 +281,20 @@ const HomePage = () => {
                         />
                       </S.ContainerInput>
 
-                      <S.ContainerInput>
-                      <Label htmlFor="dataPersonal__email">E-mail:</Label>
-                      <Input
-                        id="dataPersonal__"
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                        variant="login"
-                        values={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        errorMessage={errors.email}
-                      />
-                    </S.ContainerInput>
+                      <S.ContainerInput className="dataPersonal">
+                        <Label htmlFor="dataPersonal__email">E-mail:</Label>
+                        <Input
+                          id="dataPersonal__email"
+                          type="email"
+                          name="email"
+                          placeholder="E-mail"
+                          variant=""
+                          value={values.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.email}
+                        />
+                      </S.ContainerInput>
                     </S.FormGroup>
 
                     <S.FormGroup>
@@ -298,7 +305,7 @@ const HomePage = () => {
                           type="text"
                           name="cpf"
                           placeholder="CPF"
-                          variant="login"
+                          variant=""
                           value={values.cpf}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -313,7 +320,7 @@ const HomePage = () => {
                           type="text"
                           name="phone"
                           placeholder="(00) 0 0000-0000"
-                          variant="login"
+                          variant=""
                           value={values.phone}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -329,7 +336,7 @@ const HomePage = () => {
                           id="dataPersonal__genrer"
                           name="genrer"
                           placeholder="Selecione o Género"
-                          variant="login"
+                          variant=""
                           options={options}
                           value={values.genrer}
                           onChange={handleChange}
@@ -345,7 +352,7 @@ const HomePage = () => {
                           type="date"
                           name="birthday"
                           placeholder="Data de nascimento"
-                          variant="login"
+                          variant=""
                           value={values.birthday}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -356,14 +363,14 @@ const HomePage = () => {
                   </S.Form>
 
                   <div className="col-lg-12">
-                    <S.BtnConfirm onClick={(e) => changeStepper(e, 2)} className="confirmBtn">
+                    <S.BtnConfirm onClick={(e) => changeStepper(e, 2)} variant={values.birthday ? 'primary' : ''} className="confirmBtn">
                       confirmar
                     </S.BtnConfirm>
                   </div>
                 </div>
               </AccordionDetails>
             </Accordion>
-            <Accordion expanded={expandedEl === 2} className="formSection" onChange={(e) => changeExpand(e, 2)}>
+            <Accordion expanded={expandedEl === 2 || expandedEl === 3} className="formSection" onChange={(e) => changeExpand(e, 2)}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -379,6 +386,7 @@ const HomePage = () => {
                     <span>Já está cadastrado?</span>
                     <div>Clique aqui para entrar</div>
                   </div>
+
                   <S.Form>
                     <S.FormGroup>
                       <S.ContainerInput className="dataPersonal">
@@ -388,7 +396,7 @@ const HomePage = () => {
                           type="text"
                           name="name"
                           placeholder="Nome do destinatário"
-                          variant="login"
+                          variant=""
                           value={values.name}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -396,20 +404,20 @@ const HomePage = () => {
                         />
                       </S.ContainerInput>
 
-                      <S.ContainerInput>
-                      <Label htmlFor="dataPersonal__email">E-mail:</Label>
-                      <Input
-                        id="dataPersonal__"
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                        variant="login"
-                        values={values.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        errorMessage={errors.email}
-                      />
-                    </S.ContainerInput>
+                      <S.ContainerInput className="dataPersonal">
+                        <Label htmlFor="dataPersonal__email">E-mail:</Label>
+                        <Input
+                          id="dataPersonal__email"
+                          type="email"
+                          name="email"
+                          placeholder="E-mail"
+                          variant=""
+                          value={values.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.email}
+                        />
+                      </S.ContainerInput>
                     </S.FormGroup>
 
                     <S.FormGroup>
@@ -420,7 +428,7 @@ const HomePage = () => {
                           type="text"
                           name="cpf"
                           placeholder="CPF"
-                          variant="login"
+                          variant=""
                           value={values.cpf}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -435,7 +443,7 @@ const HomePage = () => {
                           type="text"
                           name="phone"
                           placeholder="(00) 0 0000-0000"
-                          variant="login"
+                          variant=""
                           value={values.phone}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -451,7 +459,7 @@ const HomePage = () => {
                           id="dataPersonal__genrer"
                           name="genrer"
                           placeholder="Selecione o Género"
-                          variant="login"
+                          variant=""
                           options={options}
                           value={values.genrer}
                           onChange={handleChange}
@@ -467,7 +475,7 @@ const HomePage = () => {
                           type="date"
                           name="birthday"
                           placeholder="Data de nascimento"
-                          variant="login"
+                          variant=""
                           value={values.birthday}
                           onChange={handleChange}
                           onBlur={handleBlur}
@@ -476,6 +484,12 @@ const HomePage = () => {
                       </S.ContainerInput>
                     </S.FormGroup>
                   </S.Form>
+
+                  <div className="col-lg-12">
+                    <S.BtnConfirm onClick={(e) => handleTotal(e, 3)} variant={values.birthday ? 'primary' : ''} className="confirmBtn">
+                      confirmar
+                    </S.BtnConfirm>
+                  </div>
                 </div>
               </AccordionDetails>
             </Accordion>
@@ -518,9 +532,9 @@ const HomePage = () => {
                 <span>R$ 404,40</span>
               </div>
             </S.ContentShoppingFooter>
-            {validation[2] === 1 && (
+            {validation[3] === 1 && (
               <S.ContainerBtnResult className="col-lg-12 text-center">
-                <S.BtnConfirm className="confirmBtn" type="button" onClick={handleOnSubmit}>
+                <S.BtnConfirm className="confirmBtn" variant={validation[3] === 1 ? 'primary' : ''} type="button"  onClick={handleOnSubmit}>
                   confirmar
                 </S.BtnConfirm>
               </S.ContainerBtnResult>
