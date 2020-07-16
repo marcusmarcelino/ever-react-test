@@ -15,7 +15,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { QontoConnector } from '../../config/dynamicCar';
 import { getSteps, getTableData, getResult} from './simulationData';
 import {Input, Label, Select } from '../../components/atoms';
-import FormDefault from './formDefault';
 
 import DataPersonalValidation from './validations';
 
