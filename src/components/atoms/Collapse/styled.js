@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { Container as Ctn } from '@components/atoms/Container/styled';
+import { Container as Ctn } from '../Container/styled';
 
-import Arrow from '@assets/images/arrowCheckout.svg';
+import Arrow from '../../../assets/images/arrowCheckout.svg';
 
 export const Container = styled(Ctn)`
   padding: 30px 15px;

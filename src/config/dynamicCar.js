@@ -1,4 +1,4 @@
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import StepConnector from "@material-ui/core/StepConnector";
 
 export const QontoConnector = withStyles({

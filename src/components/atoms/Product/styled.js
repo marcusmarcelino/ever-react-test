@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Lnk from '@components/atoms/Link';
-import Txt from '@components/atoms/Text';
+import Lnk from '../Link';
+import Txt from '../Text';
 
 export const Product = styled.div`
   display: flex;

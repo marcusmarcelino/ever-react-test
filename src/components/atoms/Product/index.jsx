@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Text from '@components/atoms/Text';
+import Text from '../Text';
 
-import Copy from '@assets/images/copy.svg';
-import Share from '@assets/images/share.svg';
+import Copy from '../../../assets/images/copy.svg';
+import Share from '../../../assets/images/share.svg';
 
 import * as S from './styled';
 

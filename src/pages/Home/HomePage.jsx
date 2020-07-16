@@ -1,10 +1,10 @@
 import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
+import { useFormik } from 'formik';
 
 // Material UI Imports
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
-import TextField from "@material-ui/core/TextField";
 import StepLabel from "@material-ui/core/StepLabel";
 import { Accordion } from "@material-ui/core";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -14,12 +14,41 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { QontoConnector } from '../../config/dynamicCar';
 import { getSteps, getTableData, getResult} from './simulationData';
+import {Input, Label, Select } from '../../components/atoms';
+
+import DataPersonalValidation from './validations';
 
 import maskGroup1 from '../../assets/images/MaskGroup1.svg';
 
 import * as S from './styled';
 
 const HomePage = () => {
+  const { handleBlur, handleChange, handleSubmit, values, errors } = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      cpf: '',
+      phone: '',
+      genrer: '',
+      birthday: '',
+    },
+    onSubmit(inputValues) {
+      console.log(inputValues);
+    },
+    validationSchema: DataPersonalValidation,
+  });
+
+  const options = [
+    {
+      label: 'Feminino',
+      value: 'f'
+    },
+    {
+      label: 'Masculino',
+      value: 'm',
+    }
+  ];
+
   const [stepper, setStepper] = useState(0);
   const [validation, setValidation] = useState([1, 0, 0]);
   const [stepperStyles, setStepperStyles] = useState(["active", "beactive", "beactive"]);
@@ -70,7 +99,7 @@ const HomePage = () => {
   const result = getResult();
 
   return (
-    <S.Container className="root">
+    <S.MainContainer className="root">
       <S.Content className="mainSection">
         <S.ProgressBar className="stepperContainer">
           <Stepper
@@ -88,17 +117,15 @@ const HomePage = () => {
         </S.ProgressBar>
         <S.ContainerUploadCard className="uploadCard">
           <S.ContentUploadForm className="uploadForm">
-            <Accordion
-              expanded={expandedEl === 0}
-              className="formSection"
-              onChange={(e) => changeExpand(e, 0)}
-            >
+            <Accordion expanded={expandedEl === 0} className="formSection" onChange={(e) => changeExpand(e, 0)}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 className={stepperStyles[0]}
               >
-                <Typography>Accordion 1</Typography>
+                <Typography>
+                  correct form name according to the page
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <div className="form">
@@ -106,64 +133,122 @@ const HomePage = () => {
                     <span>Já está cadastrado?</span>
                     <div>Clique aqui para entrar</div>
                   </div>
-                  <div>
-                    <label>Nome Completo:</label>
-                    <input
-                      placeholder="Carla Sousa Caetano"
-                      onChange={() => handleValidation(0)}
-                      name="title"
-                    />
-                  </div>
-                  <div>
-                    <label>E-mail:</label>
-                    <input
-                      placeholder="carlacaetano@gmail.com"
-                      type="email"
-                      name="email"
-                    />
-                  </div>
-                  <div>
-                    <label>CPF:</label>
-                    <input placeholder="001.234.567-89"></input>
-                  </div>
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <input placeholder="(63) 9 9900 9901" />
-                  </div>
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <select>
-                      <option>feminino</option>
-                      <option>masculina</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <input placeholder="Carla Sousa Caetano" type="date" />
-                  </div>
+
+                  <S.Form>
+                    <S.FormGroup>
+                      <S.ContainerInput className="dataPersonal">
+                        <Label htmlFor="dataPersonal__name">Nome:</Label>
+                        <Input
+                          id="dataPersonal__name"
+                          type="text"
+                          name="name"
+                          placeholder="Nome do destinatário"
+                          variant="login"
+                          value={values.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.name}
+                        />
+                      </S.ContainerInput>
+
+                      <S.ContainerInput>
+                      <Label htmlFor="dataPersonal__email">E-mail:</Label>
+                      <Input
+                        id="dataPersonal__"
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        variant="login"
+                        values={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        errorMessage={errors.email}
+                      />
+                    </S.ContainerInput>
+                    </S.FormGroup>
+
+                    <S.FormGroup>
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__cpf">CPF:</Label>
+                        <Input
+                          id="dataPersonal__cpf"
+                          type="text"
+                          name="cpf"
+                          placeholder="CPF"
+                          variant="login"
+                          value={values.cpf}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.cpf}
+                        />
+                      </S.ContainerInput>                    
+
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__phone">Telefone de contato:</Label>
+                        <Input
+                          id="dataPersonal__phone"
+                          type="text"
+                          name="phone"
+                          placeholder="(00) 0 0000-0000"
+                          variant="login"
+                          value={values.phone}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.phone}
+                        />
+                      </S.ContainerInput>
+                    </S.FormGroup>
+                    
+                    <S.FormGroup>
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__genrer">Gênero:</Label>
+                        <Select
+                          id="dataPersonal__genrer"
+                          name="genrer"
+                          placeholder="Selecione o Género"
+                          variant="login"
+                          options={options}
+                          value={values.genrer}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.genrer}
+                        />
+                      </S.ContainerInput>
+
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__birthday">Data de nascimento:</Label>
+                        <Input
+                          id="dataPersonal__birthday"
+                          type="date"
+                          name="birthday"
+                          placeholder="Data de nascimento"
+                          variant="login"
+                          value={values.birthday}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.birthday}
+                        />
+                      </S.ContainerInput>
+                    </S.FormGroup>
+                  </S.Form>
+
                   <div className="col-lg-12">
-                    <button
-                      onClick={(e) => changeStepper(e, 1)}
-                      disabled={!validation[0]}
-                      className="confirmBtn"
-                    >
+                    <S.BtnConfirm onClick={(e) => changeStepper(e, 1)} disabled={!validation[0]} className="confirmBtn">
                       confirmar
-                    </button>
+                    </S.BtnConfirm>
                   </div>
                 </div>
               </AccordionDetails>
             </Accordion>
-            <Accordion
-              expanded={expandedEl === 1}
-              className="formSection"
-              onChange={(e) => changeExpand(e, 1)}
-            >
+            <Accordion expanded={expandedEl === 1} className="formSection" onChange={(e) => changeExpand(e, 1)}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 className={stepperStyles[1]}
               >
-                <Typography>Informações para entrega{expandedEl}</Typography>
+                <Typography>
+                  correct form name according to the page
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <div className="form">
@@ -171,56 +256,122 @@ const HomePage = () => {
                     <span>Já está cadastrado?</span>
                     <div>Clique aqui para entrar</div>
                   </div>
-                  <div>
-                    <label>Nome Completo:</label>
-                    <input placeholder="Carla Sousa Caetano" />
-                  </div>
-                  <div>
-                    <label>E-mail:</label>
-                    <input placeholder="Carla Sousa Caetano" />
-                  </div>
-                  <div>
-                    <label>CPF:</label>
-                    <input></input>
-                  </div>
+                  
+                  <S.Form>
+                    <S.FormGroup>
+                      <S.ContainerInput className="dataPersonal">
+                        <Label htmlFor="dataPersonal__name">Nome:</Label>
+                        <Input
+                          id="dataPersonal__name"
+                          type="text"
+                          name="name"
+                          placeholder="Nome do destinatário"
+                          variant="login"
+                          value={values.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.name}
+                        />
+                      </S.ContainerInput>
 
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <input placeholder="Carla Sousa Caetano" />
-                  </div>
-                  <div>
-                    <label>Gênero:</label>
-                    <select>
-                      <option>masculino</option>
-                      <option>fêmeo</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <input placeholder="Carla Sousa Caetano" type="date" />
-                  </div>
+                      <S.ContainerInput>
+                      <Label htmlFor="dataPersonal__email">E-mail:</Label>
+                      <Input
+                        id="dataPersonal__"
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        variant="login"
+                        values={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        errorMessage={errors.email}
+                      />
+                    </S.ContainerInput>
+                    </S.FormGroup>
+
+                    <S.FormGroup>
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__cpf">CPF:</Label>
+                        <Input
+                          id="dataPersonal__cpf"
+                          type="text"
+                          name="cpf"
+                          placeholder="CPF"
+                          variant="login"
+                          value={values.cpf}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.cpf}
+                        />
+                      </S.ContainerInput>                    
+
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__phone">Telefone de contato:</Label>
+                        <Input
+                          id="dataPersonal__phone"
+                          type="text"
+                          name="phone"
+                          placeholder="(00) 0 0000-0000"
+                          variant="login"
+                          value={values.phone}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.phone}
+                        />
+                      </S.ContainerInput>
+                    </S.FormGroup>
+                    
+                    <S.FormGroup>
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__genrer">Gênero:</Label>
+                        <Select
+                          id="dataPersonal__genrer"
+                          name="genrer"
+                          placeholder="Selecione o Género"
+                          variant="login"
+                          options={options}
+                          value={values.genrer}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.genrer}
+                        />
+                      </S.ContainerInput>
+
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__birthday">Data de nascimento:</Label>
+                        <Input
+                          id="dataPersonal__birthday"
+                          type="date"
+                          name="birthday"
+                          placeholder="Data de nascimento"
+                          variant="login"
+                          value={values.birthday}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.birthday}
+                        />
+                      </S.ContainerInput>
+                    </S.FormGroup>
+                  </S.Form>
+
                   <div className="col-lg-12">
-                    <button
-                      onClick={(e) => changeStepper(e, 2)}
-                      className="confirmBtn"
-                    >
+                    <S.BtnConfirm onClick={(e) => changeStepper(e, 2)} className="confirmBtn">
                       confirmar
-                    </button>
+                    </S.BtnConfirm>
                   </div>
                 </div>
               </AccordionDetails>
             </Accordion>
-            <Accordion
-              expanded={expandedEl === 2}
-              className="formSection"
-              onChange={(e) => changeExpand(e, 2)}
-            >
+            <Accordion expanded={expandedEl === 2} className="formSection" onChange={(e) => changeExpand(e, 2)}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 className={stepperStyles[2]}
               >
-                <Typography>Forma de Pagamento</Typography>
+                <Typography>
+                  correct form name according to the page
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <div className="form">
@@ -228,34 +379,103 @@ const HomePage = () => {
                     <span>Já está cadastrado?</span>
                     <div>Clique aqui para entrar</div>
                   </div>
-                  <div>
-                    <label>Nome Completo:</label>
-                    <input placeholder="Carla Sousa Caetano" />
-                  </div>
-                  <div>
-                    <label>E-mail:</label>
-                    <input placeholder="Carla Sousa Caetano" />
-                  </div>
-                  <div>
-                    <label>CPF:</label>
-                    <input></input>
-                  </div>
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <select>
-                      <option></option>
-                      <option></option>
-                      <option></option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <input placeholder="Carla Sousa Caetano" />
-                  </div>
-                  <div>
-                    <label>Telefone de Contato:</label>
-                    <input placeholder="Carla Sousa Caetano" type="date" />
-                  </div>
+                  <S.Form>
+                    <S.FormGroup>
+                      <S.ContainerInput className="dataPersonal">
+                        <Label htmlFor="dataPersonal__name">Nome:</Label>
+                        <Input
+                          id="dataPersonal__name"
+                          type="text"
+                          name="name"
+                          placeholder="Nome do destinatário"
+                          variant="login"
+                          value={values.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.name}
+                        />
+                      </S.ContainerInput>
+
+                      <S.ContainerInput>
+                      <Label htmlFor="dataPersonal__email">E-mail:</Label>
+                      <Input
+                        id="dataPersonal__"
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        variant="login"
+                        values={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        errorMessage={errors.email}
+                      />
+                    </S.ContainerInput>
+                    </S.FormGroup>
+
+                    <S.FormGroup>
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__cpf">CPF:</Label>
+                        <Input
+                          id="dataPersonal__cpf"
+                          type="text"
+                          name="cpf"
+                          placeholder="CPF"
+                          variant="login"
+                          value={values.cpf}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.cpf}
+                        />
+                      </S.ContainerInput>                    
+
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__phone">Telefone de contato:</Label>
+                        <Input
+                          id="dataPersonal__phone"
+                          type="text"
+                          name="phone"
+                          placeholder="(00) 0 0000-0000"
+                          variant="login"
+                          value={values.phone}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.phone}
+                        />
+                      </S.ContainerInput>
+                    </S.FormGroup>
+                    
+                    <S.FormGroup>
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__genrer">Gênero:</Label>
+                        <Select
+                          id="dataPersonal__genrer"
+                          name="genrer"
+                          placeholder="Selecione o Género"
+                          variant="login"
+                          options={options}
+                          value={values.genrer}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.genrer}
+                        />
+                      </S.ContainerInput>
+
+                      <S.ContainerInput>
+                        <Label htmlFor="dataPersonal__birthday">Data de nascimento:</Label>
+                        <Input
+                          id="dataPersonal__birthday"
+                          type="date"
+                          name="birthday"
+                          placeholder="Data de nascimento"
+                          variant="login"
+                          value={values.birthday}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          errorMessage={errors.birthday}
+                        />
+                      </S.ContainerInput>
+                    </S.FormGroup>
+                  </S.Form>
                 </div>
               </AccordionDetails>
             </Accordion>
@@ -299,16 +519,16 @@ const HomePage = () => {
               </div>
             </S.ContentShoppingFooter>
             {validation[2] === 1 && (
-              <div className="col-lg-12 text-center">
-                <button className="confirmBtn" type="button" onClick={handleOnSubmit}>
+              <S.ContainerBtnResult className="col-lg-12 text-center">
+                <S.BtnConfirm className="confirmBtn" type="button" onClick={handleOnSubmit}>
                   confirmar
-                </button>
-              </div>
+                </S.BtnConfirm>
+              </S.ContainerBtnResult>
             )}
           </S.ContentShoppingCart>
         </S.ContainerUploadCard>
       </S.Content>
-    </S.Container>
+    </S.MainContainer>
   );
 }
 

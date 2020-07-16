@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 
-import ButtonStyled from '@components/atoms/Button/styled';
-import Button from '@components/atoms/Button';
-import Ctn from '@components/atoms/Container';
-import Ipt from '@components/atoms/Input';
-import Lbl from '@components/atoms/Label';
-import Txt from '@components/atoms/Text';
+import ButtonStyled from '../Button/styled';
+import Button from '../Button';
+import Ctn from '../Container';
+import Ipt from '../Input';
+import Lbl from '../Label';
+import Txt from '../Text';
 
-import Ecommerce from '@assets/images/ecommerce.svg';
+import Ecommerce from '../../../assets/images/ecommerce.svg';
 
 const variants = {
   normal: () => css`

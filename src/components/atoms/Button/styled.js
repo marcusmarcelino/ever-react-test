@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
-import IconCopy from '@assets/images/copyWhite.svg';
-import IconShare from '@assets/images/shareWhite.svg';
-import IconTrash from '@assets/images/trash.svg';
-import IconArrowRight from '@assets/images/arrowRight.svg';
-import IconWhatsApp from '@assets/images/WhatsApp_White.svg';
-import IconEmail from '@assets/images/e-mail-white.svg';
+import IconCopy from '../../../assets/images/copyWhite.svg';
+import IconShare from '../../../assets/images/shareWhite.svg';
+import IconTrash from '../../../assets/images/trash.svg';
+import IconArrowRight from '../../../assets/images/arrowRight.svg';
+import IconWhatsApp from '../../../assets/images/WhatsApp_White.svg';
+import IconEmail from '../../../assets/images/e-mail-white.svg';
 
 const variants = {
   primary: () => css`

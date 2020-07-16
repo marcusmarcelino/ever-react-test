@@ -1,17 +1,17 @@
 import styled, { css } from 'styled-components';
 
-import Btn from '@components/atoms/Button';
+import Btn from '../Button';
 
-import CommisionWhite from '@assets/images/commision_white.svg';
-import Discount from '@assets/images/discount.svg';
-import Saldo from '@assets/images/saldo.svg';
-import Faturado from '@assets/images/faturado.svg';
-import Liberacao from '@assets/images/liberacao.svg';
-import Liberado from '@assets/images/liberado.svg';
-import Bank from '@assets/images/bank.svg';
-import Shopping from '@assets/images/shopping.svg';
-import Marketing from '@assets/images/marketing.svg';
-import University from '@assets/images/university.svg';
+import CommisionWhite from '../../../assets/images/commision_white.svg';
+import Discount from '../../../assets/images/discount.svg';
+import Saldo from '../../../assets/images/saldo.svg';
+import Faturado from '../../../assets/images/faturado.svg';
+import Liberacao from '../../../assets/images/liberacao.svg';
+import Liberado from '../../../assets/images/liberado.svg';
+import Bank from '../../../assets/images/bank.svg';
+import Shopping from '../../../assets/images/shopping.svg';
+import Marketing from '../../../assets/images/marketing.svg';
+import University from '../../../assets/images/university.svg';
 
 const images = {
   commision: () => css`

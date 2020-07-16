@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { Container } from '@components/atoms';
+import { Container } from '../../atoms';
 
-import ArrowTop from '@assets/images/arrowTop.svg';
+import ArrowTop from '../../../assets/images/arrowTop.svg';
 
 export const ContainerSelect = styled(Container)`
   position: relative;

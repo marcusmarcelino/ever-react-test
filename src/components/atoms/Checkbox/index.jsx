@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import Text from '@components/atoms/Text';
+import Text from '../Text';
 
 import * as S from './styled';
 

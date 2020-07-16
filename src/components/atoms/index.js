@@ -10,7 +10,6 @@ import Header from './Header';
 import Icon from './Icon';
 import Input from './Input';
 import Label from './Label';
-import Link from './Link';
 import Product from './Product';
 import Select from './Select';
 import Text from './Text';
@@ -28,7 +27,6 @@ export {
   Icon,
   Input,
   Label,
-  Link,
   Product,
   Select,
   Text,

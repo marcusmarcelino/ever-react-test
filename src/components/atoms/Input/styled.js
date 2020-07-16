@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Container from '@components/atoms/Container';
+import Container from '../Container';
 
 export const InputContainer = styled(Container)``;
 

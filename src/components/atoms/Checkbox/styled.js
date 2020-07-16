@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Label from '@components/atoms/Label';
+import Label from '../Label';
 
 export const ContainerCheckbox = styled(Label)`
   padding-left: 30px;
